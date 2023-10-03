@@ -1,0 +1,149 @@
+<div class="container-fluid mt-3 ms-3 me-3 m-2 ">
+  <div class="card light-gray-card">
+    <h5 class="card-title mt-2 ms-2">Table To Insert Data</h5>
+    <div class="card-body">
+      <div class="container">
+        <div class="row justify-items-end">
+          <div class="col-md-3">
+            <div class="mb-3">
+              <input
+                class="form-control form-control-sm mb-2"
+                type="number"
+                placeholder="Enter No. Of Rows"
+                (keyup)="generateRows()"
+                [(ngModel)]="numberOfRowsToGenerate"
+              />
+              <button class="btn btn-primary" (click)="generateRows()">
+                Generate Rows
+              </button>
+            </div>
+          </div>
+        </div>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">length</th>
+              <th scope="col">Breadth</th>
+              <th scope="col">Height</th>
+              <th scope="col">Actual Weight</th>
+              <th scope="col">Volumetric Weight</th>
+              <th scope="col">Actions</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users; let i = index">
+              <td>
+                <label class="form-label">{{ i }}</label>
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  [(ngModel)]="user.length"
+                  name="length{{ i }}"
+                  (change)="onInputChange(i)"
+                />
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  [(ngModel)]="user.breadth"
+                  name="breadth{{ i }}"
+                  (change)="onInputChange(i)"
+                />
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  [(ngModel)]="user.height"
+                  name="height{{ i }}"
+                  (change)="onInputChange(i)"
+                />
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  [(ngModel)]="user.actualWeight"
+                  name="actualWeight{{ i }}"
+                  (change)="onInputChange(i)"
+                />
+              </td>
+              <td>
+                <input
+                  class="form-control"
+                  [(ngModel)]="user.volumetricWeight"
+                  name="volumetricWeight{{ i }}"
+                  (change)="onInputChange(i)"
+                />
+              </td>
+              <td>
+                <button
+                  class="btn btn-success btn-sm mx-1"
+                  title="Add User"
+                  type="button"
+                  (click)="addUser(i, user)"
+                >
+                <i class="bi bi-plus"></i>
+                </button>
+                <button
+                class="btn btn-danger btn-sm mx-1"
+                title="Delete User"
+                type="button"
+                (click)="deleteUser(i)"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid col-md-12 mt-3 ms-3 me-4 m-2">
+  <div class="card light-gray-card">
+    <h5 class="card-title mt-2 ms-2">Table To Show List</h5> 
+    <div class="card-body">
+      <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Length</th>
+            <th scope="col">Breadth</th>
+            <th scope="col">Height</th>
+            <th scope="col">Actual Weight</th>
+            <th scope="col">Volumetric Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userList; let i = index">
+            <td>
+              <label class="form-label">{{ user.id }}</label>
+            </td>
+            <td>
+              <label class="form-label">{{ user.details.length }}</label>
+            </td>
+            <td>
+              <label class="form-label">{{ user.details.breadth }}</label>
+            </td>
+            <td>
+              <label class="form-label">{{ user.details.height }}</label>
+            </td>
+            <td>
+              <label class="form-label">{{ user.details.actualWeight }}</label>
+            </td>
+            <td>
+              <label class="form-label">{{
+                user.details.volumetricWeight
+              }}</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
